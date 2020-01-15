@@ -4,6 +4,9 @@ This plugin allows Flutter apps to discover network connectivity and configure
 themselves accordingly. It can distinguish between cellular vs WiFi connection.
 This plugin works for iOS and Android.
 
+This is a modified version of the plugin from the Flutter team (https://github.com/flutter/plugins/tree/master/packages/connectivity).
+We removed CoreLocation from this plugin, to be able to include it without having to ask the user for location permission.
+
 > Note that on Android, this does not guarantee connection to Internet. For instance,
 the app might have wifi access but it might be a VPN or a hotel WiFi with no access.
 
@@ -89,12 +92,7 @@ The `CNCopyCurrentNetworkInfo` will work for Apps that:
 
 If your app falls into the last two categories, it will work as it is. If your app doesn't fall into the last two categories,
 and you still need to access the wifi information, you should request user's authorization to use location information.
-
-There is a helper method provided in this plugin to request the location authorization: `requestLocationServiceAuthorization`.
-To request location authorization, make sure to add the following keys to your _Info.plist_ file, located in `<project root>/ios/Runner/Info.plist`:
-
-* `NSLocationAlwaysAndWhenInUseUsageDescription` - describe why the app needs access to the user’s location information all the time (foreground and background). This is called _Privacy - Location Always and When In Use Usage Description_ in the visual editor.
-* `NSLocationWhenInUseUsageDescription` - describe why the app needs access to the user’s location information when the app is running in the foreground. This is called _Privacy - Location When In Use Usage Description_ in the visual editor.
+-> Then you should use the original connectivity plugin at https://github.com/flutter/plugins/tree/master/packages/connectivity
 
 ## Getting Started
 
